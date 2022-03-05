@@ -2,15 +2,15 @@
 //dialogcheck
 let check=false;
 let dialog;
+const goodsContents=document.getElementById("goodscontents");
 const body=document.querySelector("body");
 const main=document.querySelector("main");
-goodsContents.addEventListener("click", e =>{
+body.addEventListener("click", e =>{
   //お気に入り処理
-  if(e.target.classList.contains("favoriteFalse") ||
-     e.target.classList.contains("favoriteTrue")){
-       console.log(e.target.parentNode.parentNode.dataset.id);
-       const check=e.target.checked?true:false;
-       favorite(check);
+  if(e.target.classList.contains("ff") ||
+    e.target.classList.contains("tf")){
+    const id=e.target.parentNode.parentNode.dataset.id;
+    favorite(id,e.target);
   }
   if(check)return;
   //dialog処理
@@ -32,10 +32,19 @@ goodsContents.addEventListener("click", e =>{
       const imgDiv=document.createElement("div");
       imgDiv.id="dialogDiv";
       const star=document.createElement("span");
-      parseInt(json.is_done)===1?star.textContent="★":star.textContent="☆";
+      if(parseInt(json.is_done)===1){
+        star.textContent="★"
+        star.classList.add("tf");
+      }else{
+        star.textContent="☆";
+        star.classList.add("ff");
+      }
+      const delBtn=document.createElement("span");
+      delBtn.textContent="x";
       const img=document.createElement("img");
       img.src="../img/"+json.img+".png";
       imgDiv.appendChild(star);
+      imgDiv.appendChild(delBtn);
       imgDiv.appendChild(img);
       const dialogName=document.createElement("div");
       dialogName.textContent=json.name;

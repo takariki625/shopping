@@ -1,5 +1,4 @@
 "use strict;"
-const goodsContents=document.getElementById("goodscontents");
 document.querySelector("form").addEventListener("submit", e =>{
   e.preventDefault();
   const serch=document.querySelector("input[type='text']");
@@ -39,10 +38,10 @@ function createGoodsContents(box, id , name , price , img,is_done){
   imgDiv.classList.add("image");
   const goodsStar=document.createElement("span");
   if(parseInt(is_done) === 0){
-    goodsStar.classList.add("favoriteFalse");
+    goodsStar.classList.add("ff");
     goodsStar.textContent="☆";
   }else{
-    goodsStar.classList.add("favoriteTrue");
+    goodsStar.classList.add("tf");
     goodsStar.textContent="★";
   }
   const goodsImg=document.createElement("img");

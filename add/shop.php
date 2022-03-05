@@ -14,6 +14,10 @@ class Shop extends getPdo
           $result=$this->serch();
           echo json_encode($result);
           break;
+        case "toggle":
+          $is_done=$this->toggle();
+          echo json_encode($is_done);
+          break;
       }
       exit;
     }
@@ -25,6 +29,17 @@ class Shop extends getPdo
     $stmt->execute();
     $goods=$stmt->fetch();
     return $goods;
+  }
+  public function toggle(){
+    $id=filter_input(INPUT_POST,"id");
+    $stmt=$this->pdo->prepare("UPDATE goods SET is_done=NOT is_done WHERE id=:id");
+    $stmt->bindValue("id",$id,\PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt=$this->pdo->prepare("SELECT is_done FROM goods WHERE id=:id");
+    $stmt->bindValue("id",$id,\PDO::PARAM_INT);
+    $stmt->execute();
+    $is_done=$stmt->fetch();
+    return $is_done;
   }
 
   public function getList(){
