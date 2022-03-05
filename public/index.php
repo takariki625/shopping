@@ -3,7 +3,11 @@
         <?php foreach($goodsList as $goods): ?>
           <li data-id="<?= $goods["id"]; ?>">
             <div class="image">
-              <span class="favoriteFalse" <?= $goods["is_done"]?"checked":""?>>☆</span>
+              <?php if($goods["is_done"]): ?>
+                <span class="favoriteTrue" <?= $goods["is_done"]?"checked":""?>>★</span>
+              <?php else: ?>
+                <span class="favoriteFalse" <?= $goods["is_done"]?"checked":""?>>☆</span>
+              <?php endif; ?>
               <img src="../img/<?= $goods["img"]; ?>.png" class="img" name="<?= $goods["img"]; ?>">
             </div>
             <div>

@@ -67,23 +67,21 @@ img{
   list-style:none;
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding:0;
 }
 #goodscontents li{
   text-align: center;
-  margin-top:5px;
+  margin:5px 0px 0px 12px;
   background-color: rgb(245, 245, 245);
   font-size:18px;
 }
 #goodscontents .image{
-  width:170px;
-  height:170px;
+  width:100%;
   position:relative;
 }
 #goodscontents img{
-  width:170px;
-  height:170px;
+  width:180px;
+  height:140px;
   cursor:default;
 }
 #goodscontents .favoriteFalse ,
@@ -97,12 +95,53 @@ img{
   cursor:default;
 }
 
+#goodscontents .image:checked{
+  background-color: black;
+  font-weight: bold;
+  color:black;
+}
+
+.main{
+  opacity:0.3;
+}
 #dialog{
   position:fixed;
-  width:60%;
+  width:80%;
   height:500px;
-  top:170px;
-  right:20%;
+  top:18%;
+  right:10%;
+  text-align:center;
   background-color: white;
+  border-radius: 5px;
   z-index: 9;
+  font-size:30px;
+}
+#dialog #dialogDiv{
+  position:relative;
+  width:100%;
+  height:300px;
+}
+#dialogDiv img{
+  width:100%;
+  height:300px;
+}
+#dialogDiv span{
+  position:absolute;
+  top:10px;
+  left:10px;
+  font-size:40px;
+}  
+#dialog button{
+  margin-top:20px;
+  font-size:25px;
+  padding:10px 30px;
+  border:1px solid black;
+  border-radius: 20px;
+  background-color: rgb(247, 104, 104);
+  color:white;
+  box-shadow:10px 10px 5px 20px;
+  opacity:0.7;
+}
+#dialog button:hover{
+  opacity: 1;
 }

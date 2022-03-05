@@ -25,21 +25,26 @@ document.querySelector("form").addEventListener("submit", e =>{
             return;
           }
         }
-        createGoodsContents(goodsContents,json.id,json.name,json.price,json.img);
+        createGoodsContents(goodsContents,json.id,json.name,json.price,json.img,json.is_done);
       }
     }else{
       window.location.href="serchLose.php";
     }
   })
 })
-function createGoodsContents(box, id , name , price , img){
+function createGoodsContents(box, id , name , price , img,is_done){
   const li=document.createElement("li");
   li.dataset.id=id;
   const imgDiv=document.createElement("div");
   imgDiv.classList.add("image");
   const goodsStar=document.createElement("span");
-  goodsStar.classList.add("favorite");
-  goodsStar.textContent="☆";
+  if(parseInt(is_done) === 0){
+    goodsStar.classList.add("favoriteFalse");
+    goodsStar.textContent="☆";
+  }else{
+    goodsStar.classList.add("favoriteTrue");
+    goodsStar.textContent="★";
+  }
   const goodsImg=document.createElement("img");
   goodsImg.src="../img/"+img+".png";
   imgDiv.appendChild(goodsStar);
