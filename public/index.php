@@ -3,11 +3,6 @@
         <?php foreach($goodsList as $goods): ?>
           <li data-id="<?= $goods["id"]; ?>">
             <div class="image">
-              <?php if($goods["is_done"]): ?>
-                <span class="tf">★</span>
-              <?php else: ?>
-                  <span class="ff">☆</span>
-              <?php endif; ?>
               <img src="../img/<?= $goods["img"]; ?>.png" class="img" name="<?= $goods["img"]; ?>">
             </div>
             <div>
