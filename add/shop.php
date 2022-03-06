@@ -18,8 +18,9 @@ class Shop extends getPdo
           $is_done=$this->toggle();
           echo json_encode($is_done);
           break;
-        case "add":
-          $this->add();
+        case "cart":
+          $cartBool=$this->cart();
+          echo json_encode($cartBool);
           break;
       }
       exit;
@@ -44,12 +45,19 @@ class Shop extends getPdo
     $is_done=$stmt->fetch();
     return $is_done;
   }
-  public function add(){
+  public function cart(){
     $id=filter_input(INPUT_POST,"id");
     $stmt=$this->pdo->prepare("SELECT * FROM goods WHERE id=:id");
     $stmt->bindValue("id",$id,\PDO::PARAM_INT);
     $stmt->execute();
     $goods=$stmt->fetch();
+    $stmt=$this->pdo->query("SELECT id FROM cart");
+    $rows=$stmt->fetchAll();
+    foreach($rows as $row){
+      if($row["id"] === $id){
+        return false;
+      }
+    }
     $stmt=$this->pdo->prepare("INSERT INTO cart VALUES(:id,:name,:price,:img,:is_done)");
     $stmt->bindValue("id",$goods["id"],\PDO::PARAM_INT);
     $stmt->bindValue("name",$goods["name"],\PDO::PARAM_STR);
@@ -57,6 +65,7 @@ class Shop extends getPdo
     $stmt->bindValue("img",$goods["img"],\PDO::PARAM_STR);
     $stmt->bindValue("is_done",$goods["is_done"],\PDO::PARAM_INT);
     $stmt->execute();
+    return true;
   }
 
   public function getList(){

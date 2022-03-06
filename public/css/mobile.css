@@ -131,3 +131,17 @@ img{
 #dialog button:hover{
   opacity: 1;
 }
+
+/*cart*/
+#cartSpan{
+  position:fixed;
+  top:35%;
+  left:30%;
+  font-size:20px;
+  font-weight: bold;
+  color:black;
+  background-color: white;
+  border:1px solid black;
+  border-radius: 5px;
+  padding:10px 20px;
+}

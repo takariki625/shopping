@@ -1,12 +1,21 @@
 "use strict;"
+//dialog判定
+serchText.addEventListener("focus", e =>{
+  if(check){
+    serchText.blur();
+  }
+})
 document.querySelector("form").addEventListener("submit", e =>{
   e.preventDefault();
-  const serch=document.querySelector("input[type='text']");
-  if(serch.value === "")return;
+  //dialog判定
+  if(main.classList.contains("main")){
+    return;
+  }
+  if(serchText.value === "")return;
   fetch("?action=serch",{
     method:"POST",
     body:new URLSearchParams({
-      text:serch.value,
+      text:serchText.value,
     })
   })
   .then(response =>{
@@ -37,6 +46,7 @@ function createGoodsContents(box, id , name , price , img,is_done){
   const imgDiv=document.createElement("div");
   imgDiv.classList.add("image");
   const goodsImg=document.createElement("img");
+  goodsImg.classList.add("img");
   goodsImg.src="../img/"+img+".png";
   imgDiv.appendChild(goodsImg);
   const goodsName=document.createElement("div");
