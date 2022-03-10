@@ -25,7 +25,7 @@ body.addEventListener("click", e =>{
           const countTimer=setInterval(alertTime,100);
           function alertTime(){
             count++;
-            if(count >=30){
+            if(count >=20){
               check=false;
               main.classList.remove("main");
               cartSpan.remove();
@@ -83,5 +83,9 @@ body.addEventListener("click", e =>{
     main.classList.add("main");
     check=true;
   }
+})
+document.getElementById("cart").addEventListener("click", e =>{
+  if(check)return;
+  window.location.href="../cartPage/cartList.php";
 })
 

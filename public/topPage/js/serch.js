@@ -5,6 +5,9 @@ serchText.addEventListener("focus", e =>{
     serchText.blur();
   }
 })
+document.getElementById("purchase").addEventListener("click", ()=>{
+  window.location.href="../purchasePage/purchase.php";
+})
 document.querySelector("form").addEventListener("submit", e =>{
   e.preventDefault();
   //dialog判定
@@ -47,7 +50,7 @@ function createGoodsContents(box, id , name , price , img,is_done){
   imgDiv.classList.add("image");
   const goodsImg=document.createElement("img");
   goodsImg.classList.add("img");
-  goodsImg.src="../img/"+img+".png";
+  goodsImg.src="../../img/"+img+".png";
   imgDiv.appendChild(goodsImg);
   const goodsName=document.createElement("div");
   goodsName.textContent=name;
@@ -58,5 +61,8 @@ function createGoodsContents(box, id , name , price , img,is_done){
   li.appendChild(goodsPrice);
   box.insertBefore(li,box.firstChild);
 }
+document.getElementById("topPage").addEventListener("click", e =>{
+  window.location.href="../../../hp/public/top.php";
+})
 
 
